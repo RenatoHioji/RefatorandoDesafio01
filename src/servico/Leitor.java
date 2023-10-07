@@ -40,17 +40,22 @@ public class Leitor {
 
 
     public String lerOpcao() {
-        Scanner leitura = new Scanner(System.in);
-        System.out.println("Seja bem-vindo!");
-        System.out.println("Este é o nosso sistema de e-commerce!");
-        System.out.println("Para começar, selecione uma das funções abaixo: \n"
-                + "1. Listar todos os produtos \n"
-                + "2. Quero cadastrar um novo produto! \n"
-                + "3. Irei remover um produto já existente! \n"
-                + "4. Tive uma nova ideia e irei atualizar um de nossos produtos! \n"
-                + "5. Irei realizar compras \n"
-                + "6. Sair");
-        return leitura.nextLine();
+        String opcao = "";
+        try(Scanner leitura = new Scanner(System.in)){
+            System.out.println("Seja bem-vindo!");
+            System.out.println("Este é o nosso sistema de e-commerce!");
+            System.out.println("Para começar, selecione uma das funções abaixo: \n"
+                    + "1. Listar todos os produtos \n"
+                    + "2. Quero cadastrar um novo produto! \n"
+                    + "3. Irei remover um produto já existente! \n"
+                    + "4. Tive uma nova ideia e irei atualizar um de nossos produtos! \n"
+                    + "5. Irei realizar compras \n"
+                    + "6. Sair");
+            opcao = leitura.nextLine();
+        }catch(RuntimeException e){
+            System.out.println(e.getMessage());
+        }
+        return opcao;
     }
 
 

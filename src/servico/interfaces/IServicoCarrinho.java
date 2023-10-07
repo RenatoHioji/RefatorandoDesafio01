@@ -1,4 +1,4 @@
-package servico;
+package servico.interfaces;
 
 import modelo.CarrinhoDeCompras;
 import modelo.Produto;

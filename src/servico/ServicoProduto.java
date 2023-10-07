@@ -2,26 +2,26 @@ package servico;
 
 import modelo.Produto;
 import repositorio.RepositorioProduto;
+import servico.interfaces.IServicoProduto;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 
-public class ServicoProduto implements IServicoProduto{
+public class ServicoProduto implements IServicoProduto {
     RepositorioProduto repositorioProduto = new RepositorioProduto();
     @Override
     public void adicionarProduto(Produto produto) throws Exception {
         if(this.verificarExistenciaProduto(produto.getId())){
-            repositorioProduto.adicionarProduto(produto);
-        }else{
             System.out.println("Produto já existente!");
+        }else{
+            repositorioProduto.adicionarProduto(produto);
         }
     }
 
     @Override
     public void removerProduto(Long idProduto) {
-        if(!this.verificarExistenciaProduto(idProduto)) {
+        if(this.verificarExistenciaProduto(idProduto)) {
             repositorioProduto.removerProduto(idProduto);
         }else{
             System.out.println("Produto inexistente!");

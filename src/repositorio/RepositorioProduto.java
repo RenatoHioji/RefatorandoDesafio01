@@ -2,6 +2,7 @@ package repositorio;
 
 import conexao.Conexao;
 import modelo.Produto;
+import repositorio.interfaces.IRepositorioProduto;
 
 import java.sql.*;
 

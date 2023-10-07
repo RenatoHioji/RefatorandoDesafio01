@@ -1,4 +1,4 @@
-package repositorio;
+package repositorio.interfaces;
 
 import modelo.CarrinhoDeCompras;
 import modelo.Produto;

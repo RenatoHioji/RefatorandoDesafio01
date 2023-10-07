@@ -1,9 +1,10 @@
 package controlador;
 
+import controlador.interfaces.IControladorProduto;
 import modelo.Produto;
 import servico.ServicoProduto;
 
-public class ControladorProduto implements IControladorProduto{
+public class ControladorProduto implements IControladorProduto {
 
     ServicoProduto servicoProduto = new ServicoProduto();
     public ControladorProduto() {

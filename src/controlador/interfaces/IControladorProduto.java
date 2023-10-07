@@ -1,4 +1,4 @@
-package controlador;
+package controlador.interfaces;
 
 import modelo.Produto;
 
