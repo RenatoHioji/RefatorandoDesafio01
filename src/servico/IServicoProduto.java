@@ -2,13 +2,13 @@ package servico;
 
 import modelo.Produto;
 
-import java.util.List;
+import java.sql.SQLException;
 
 public interface IServicoProduto {
-    void adicionarProduto(Produto produto);
+    void adicionarProduto(Produto produto) throws Exception;
     void removerProduto(Long idProduto);
     void atualizarProduto(Long idProduto, Produto produto);
-    List<Produto> verProdutos();
-    void filtrarProdutos(String nome);
+    void verProdutos() throws Exception;
+    void filtrarProdutos(String nome) throws SQLException;
     boolean verificarExistenciaProduto(Long idProduto);
 }

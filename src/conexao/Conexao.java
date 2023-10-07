@@ -6,12 +6,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Conexao extends AConnection {
+public class Conexao extends AConnection implements AutoCloseable {
     public Conexao(){
         super();
     }
     @Override
-    protected Connection conecta() {
+    public Connection conecta() {
         try {
             URL = "jdbc:mysql://localhost:3306/desafio01";
             USUARIO = "root";
@@ -22,16 +22,8 @@ public class Conexao extends AConnection {
         }
         return criarConexao;
     }
-
     @Override
-    protected void fecharConexao() {
-        try {
-            if (criarConexao != null) {
-                criarConexao.close();
-                System.out.println("Conexão foi fechada com sucesso.");
-            }
-        } catch (SQLException e) {
-            System.out.println("Não foi possível desconectar...");
-        }
+    public void close() throws Exception {
+        criarConexao.close();
     }
 }

@@ -15,6 +15,16 @@ public class Produto {
         this.estoque = estoque;
     }
 
+    public Produto() {
+
+    }
+
+    public Produto(Produto produto) {
+        this.id = produto.getId();
+        this.nome = produto.getNome();
+        this.valor = produto.getValor();
+        this.estoque = produto.getEstoque();
+    }
 
     public Long getId() {
         return id;
