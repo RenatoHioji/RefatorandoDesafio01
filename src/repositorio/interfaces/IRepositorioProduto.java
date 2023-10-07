@@ -2,14 +2,14 @@ package repositorio.interfaces;
 
 import modelo.Produto;
 
-import java.sql.ResultSet;
+import java.util.List;
 
 public interface IRepositorioProduto {
     void adicionarProduto(Produto produto) throws Exception;
     void removerProduto(Long idProduto) throws Exception;
     void atualizarProduto(Long idProduto, Produto produto);
-    ResultSet verProdutos() throws Exception;
-    ResultSet filtrarProdutos(String nome);
-    ResultSet verificarExistenciaProduto(Long idProduto);
+    List<Produto> verProdutos() throws Exception;
+    List<Produto> filtrarProdutos(String nome);
+    List<Produto> verificarExistenciaProduto(Long idProduto);
 }
 

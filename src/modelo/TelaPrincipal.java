@@ -2,14 +2,15 @@ package modelo;
 
 import servico.ServicoTela;
 
-import java.util.Scanner;
+import java.util.Objects;
+
 
 public class TelaPrincipal {
     public void mostrarMenu() throws Exception {
         String opcao = null;
         ServicoTela servicoTela = new ServicoTela();
 
-        while (opcao != "6") {
+        while (!Objects.equals(opcao, "6")) {
             opcao = servicoTela.mostrarOpcoes();
             switch (opcao) {
                 case "1":
@@ -27,11 +28,15 @@ public class TelaPrincipal {
                 case "5":
                     servicoTela.opcao5();
                     break;
-                default:
-                    System.out.println("Desligando...");
+                case "6":
+                    servicoTela.fecharScanner();
+                    System.out.println("Deslingando...");
                     System.exit(0);
+                    break;
+                default:
+                    System.out.println("Opção inválida!");
+                    break;
             }
-
         }
     }
 }

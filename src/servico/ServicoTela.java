@@ -16,21 +16,21 @@ public class ServicoTela {
         return leitor.lerOpcao();
     }
 
-    public void opcao1() throws Exception {
+    public void opcao1(){
         controladorProduto.verProdutos();
     }
 
-    public void opcao2() throws Exception {
+    public void opcao2(){
         Produto produto = new Produto(leitor.lerNovoProduto());
         controladorProduto.adicionarProduto(produto);
     }
 
-    public void opcao3() throws Exception{
+    public void opcao3(){
         Long idProduto = leitor.lerIdExcluir();
         controladorProduto.removerProduto(idProduto);
     }
 
-    public void opcao4() throws Exception{
+    public void opcao4(){
         Long idAtualizar = leitor.lerIdAtualizar();
         Produto produto = new Produto(leitor.lerAtualizarProduto());
         controladorProduto.atualizarProduto(idAtualizar, produto);
@@ -38,6 +38,10 @@ public class ServicoTela {
 
     public void opcao5() {
 
-        }
+    }
+
+    public void fecharScanner(){
+        leitor.fecharScanner();
+    }
 
 }

@@ -1,56 +1,27 @@
 package servico;
 
 import modelo.Produto;
-
 import java.util.Scanner;
 
 public class Leitor {
+    Scanner leitura = new Scanner(System.in);
 
     public Leitor() {
 
     }
-
-    public Produto lerNovoProduto(){
-        Produto produto = new Produto();
-        try(Scanner leitura = new Scanner(System.in)){
-            System.out.println("Digite o ID do produto: ");
-            produto.setId(Long.parseLong(leitura.nextLine()));
-            System.out.println("\n Digite o nome do produto: ");
-            produto.setNome(leitura.nextLine());
-            System.out.println("\n Digite o valor do produto: ");
-            produto.setValor(Double.parseDouble(leitura.nextLine()));
-            System.out.println("\n Digite o estoque do produto: ");
-            produto.setEstoque(Integer.parseInt(leitura.nextLine()));
-        }catch(RuntimeException e){
-            System.out.println("Não foi possível adicionar um novo produto");
-        }
-        return produto;
-    }
-
-    public Long lerIdExcluir(){
-        Long idExcluir = 0L;
-        try(Scanner leitura = new Scanner(System.in)){
-            System.out.println("Digite o ID do produto a ser excluído: ");
-            idExcluir = Long.parseLong(leitura.nextLine());
-        }catch(RuntimeException e){
-            System.out.println(e.getMessage());
-        }
-        return idExcluir;
-    }
-
-
     public String lerOpcao() {
         String opcao = "";
-        try(Scanner leitura = new Scanner(System.in)){
+        try{
             System.out.println("Seja bem-vindo!");
             System.out.println("Este é o nosso sistema de e-commerce!");
-            System.out.println("Para começar, selecione uma das funções abaixo: \n"
-                    + "1. Listar todos os produtos \n"
-                    + "2. Quero cadastrar um novo produto! \n"
-                    + "3. Irei remover um produto já existente! \n"
-                    + "4. Tive uma nova ideia e irei atualizar um de nossos produtos! \n"
-                    + "5. Irei realizar compras \n"
-                    + "6. Sair");
+            System.out.println("""
+                    Para começar, selecione uma das funções abaixo:\s
+                    1. Listar todos os produtos\s
+                    2. Quero cadastrar um novo produto!\s
+                    3. Irei remover um produto já existente!\s
+                    4. Tive uma nova ideia e irei atualizar um de nossos produtos!\s
+                    5. Irei realizar compras\s
+                    6. Sair""");
             opcao = leitura.nextLine();
         }catch(RuntimeException e){
             System.out.println(e.getMessage());
@@ -58,32 +29,101 @@ public class Leitor {
         return opcao;
     }
 
-
-    public Long lerIdAtualizar() {
-        Long idAtualizar = 0L;
-        try(Scanner leitura = new Scanner(System.in)){
-            System.out.println("Digite o ID do produto a ser atualizado: ");
-            idAtualizar = Long.parseLong(leitura.nextLine());
-        }catch(RuntimeException e){
+    public Produto lerNovoProduto() {
+        Produto produto = new Produto();
+        try {
+            produto.setId(this.lerId());
+            produto.setNome(this.lerNome());
+            produto.setEstoque(this.lerEstoque());
+            produto.setValor(this.lerValor());
+        } catch (RuntimeException e) {
             System.out.println(e.getMessage());
         }
-        return idAtualizar;
+        return produto;
     }
 
     public Produto lerAtualizarProduto() {
         Produto produto = new Produto();
-        try(Scanner leitura = new Scanner(System.in)){
-            System.out.println("Digite o novo ID do produto: ");
-            produto.setId(Long.parseLong(leitura.nextLine()));
-            System.out.println("\n Digite o novo nome do produto: ");
-            produto.setNome(leitura.nextLine());
-            System.out.println("\n Digite o novo valor do produto: ");
-            produto.setValor(Double.parseDouble(leitura.nextLine()));
-            System.out.println("\n Digite o novo estoque do produto: ");
-            produto.setEstoque(Integer.parseInt(leitura.nextLine()));
+        try{
+            produto.setId(this.lerId());
+            produto.setNome(this.lerNome());
+            produto.setEstoque(this.lerEstoque());
+            produto.setValor(this.lerValor());
         }catch(RuntimeException e){
             System.out.println("Não foi possível adicionar um novo produto");
         }
         return produto;
+    }
+
+    public Long lerId() {
+        System.out.println("Digite o ID do produto: ");
+        while(true){
+            try{
+                return Long.parseLong(leitura.nextLine());
+            }catch(NumberFormatException e){
+                System.out.println("Número inváldio. Por favor, digite um número");
+            }
+        }
+    }
+    public String lerNome() {
+        System.out.println("Digite o nome do produce: ");
+        return leitura.nextLine();
+    }
+
+    public Double lerValor() {
+        System.out.println("Digite o valor do produto: ");
+        while(true) {
+            try {
+                return Double.parseDouble(leitura.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Número ínválido. Por favor, digite um valor válido.");
+            }
+        }
+    }
+    public Integer lerEstoque(){
+        System.out.println("Digite o estoque do produto: ");
+        while(true){
+            try{
+                return Integer.parseInt(leitura.nextLine());
+            }catch(NumberFormatException e){
+                System.out.println("Estoque inválido. Por favor, digite um número válido.");
+            }
+        }
+
+    }
+    public Long lerIdExcluir() {
+        try{
+            System.out.println("Digite o ID do produto a ser excluído: ");
+            while (true) {
+                try {
+                    return Long.parseLong(leitura.nextLine());
+                } catch (NumberFormatException e) {
+                    System.out.println("ID inválido. Por favor, digite um número válido.");
+                }
+            }
+        } catch (RuntimeException e) {
+            System.out.println("Não foi possível ler o ID.");
+        }
+        return 0L;
+    }
+
+    public Long lerIdAtualizar() {
+        try{
+            System.out.println("Digite o ID do produto a ser atualizado: ");
+            while(true){
+                try{
+                    return Long.parseLong(leitura.nextLine());
+                }catch(NumberFormatException e){
+                    System.out.println("ID inválido. Por favor, digite um número valido.");
+                }
+            }
+        }catch(RuntimeException e){
+            System.out.println(e.getMessage());
+        }
+        return 0L;
+    }
+
+    public void fecharScanner(){
+        leitura.close();
     }
 }

@@ -15,7 +15,7 @@ public class Conexao extends AConnection implements AutoCloseable {
         try {
             URL = "jdbc:mysql://localhost:3306/desafio01";
             USUARIO = "root";
-            SENHA= "";
+            SENHA= "root";
             criarConexao= DriverManager.getConnection(URL, USUARIO, SENHA);
         } catch (SQLException e) {
             System.out.println("Falha ao conectar ao banco de dados...");

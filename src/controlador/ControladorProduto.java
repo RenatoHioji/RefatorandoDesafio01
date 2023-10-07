@@ -11,7 +11,7 @@ public class ControladorProduto implements IControladorProduto {
     }
 
     @Override
-    public void adicionarProduto(Produto produto) throws Exception {
+    public void adicionarProduto(Produto produto){
         servicoProduto.adicionarProduto(produto);
     }
 
@@ -26,7 +26,7 @@ public class ControladorProduto implements IControladorProduto {
     }
 
     @Override
-    public void verProdutos() throws Exception {
+    public void verProdutos(){
         servicoProduto.verProdutos();
     }
 }

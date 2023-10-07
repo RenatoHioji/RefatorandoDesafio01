@@ -10,5 +10,5 @@ public interface IServicoProduto {
     void atualizarProduto(Long idProduto, Produto produto);
     void verProdutos() throws Exception;
     void filtrarProdutos(String nome) throws SQLException;
-    boolean verificarExistenciaProduto(Long idProduto);
+    boolean verificarExistenciaProduto(Long idProduto) throws SQLException;
 }
