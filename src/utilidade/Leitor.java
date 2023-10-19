@@ -1,4 +1,4 @@
-package servico;
+package utilidade;
 
 import modelo.Produto;
 import java.util.Scanner;
@@ -61,12 +61,12 @@ public class Leitor {
             try{
                 return Long.parseLong(leitura.nextLine());
             }catch(NumberFormatException e){
-                System.out.println("Número inváldio. Por favor, digite um número");
+                System.out.println("Número inválido. Por favor, digite um número.");
             }
         }
     }
     public String lerNome() {
-        System.out.println("Digite o nome do produce: ");
+        System.out.println("Digite o nome do produto: ");
         return leitura.nextLine();
     }
 
@@ -123,7 +123,17 @@ public class Leitor {
         return 0L;
     }
 
-    public void fecharScanner(){
+    public void fecharScanner() {
         leitura.close();
     }
+
+    public String lerOpcaoMudanca() {
+        System.out.println("Selecione uma das opções abaixo: \n"
+                + "1. Deletar algum produto do meu carrinho \n"
+                + "2. Atualizar algum produto do meu carrinho \n"
+                + "3. Voltar");
+        return leitura.nextLine();
+    }
+
+
 }

@@ -7,6 +7,5 @@ public abstract class AConnection {
     protected String URL;
     protected String USUARIO;
     protected String SENHA;
-
     protected abstract Connection conecta();
 }

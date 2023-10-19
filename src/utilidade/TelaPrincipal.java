@@ -1,4 +1,4 @@
-package modelo;
+package utilidade;
 
 import servico.ServicoTela;
 
@@ -6,9 +6,9 @@ import java.util.Objects;
 
 
 public class TelaPrincipal {
+    private final ServicoTela servicoTela = new ServicoTela();
     public void mostrarMenu() throws Exception {
         String opcao = null;
-        ServicoTela servicoTela = new ServicoTela();
 
         while (!Objects.equals(opcao, "6")) {
             opcao = servicoTela.mostrarOpcoes();
@@ -34,7 +34,7 @@ public class TelaPrincipal {
                     System.exit(0);
                     break;
                 default:
-                    System.out.println("Opção inválida!");
+                    System.out.println("Opção inválida! \n");
                     break;
             }
         }

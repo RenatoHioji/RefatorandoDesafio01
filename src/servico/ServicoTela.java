@@ -1,12 +1,16 @@
 package servico;
 
 import controlador.ControladorProduto;
+import controlador.ControladorCarrinho;
 import modelo.Produto;
+import utilidade.Leitor;
+
+import java.util.List;
 
 public class ServicoTela {
-    Leitor leitor = new Leitor();
-    ControladorProduto controladorProduto = new ControladorProduto();
-
+    private final Leitor leitor = new Leitor();
+    private final ControladorProduto controladorProduto = new ControladorProduto();
+    private final ControladorCarrinho controladorCarrinho = new ControladorCarrinho();
 
     public ServicoTela() {
 
@@ -37,11 +41,13 @@ public class ServicoTela {
     }
 
     public void opcao5() {
-
+        controladorCarrinho.iniciarCarrinho();
     }
+
 
     public void fecharScanner(){
         leitor.fecharScanner();
+        controladorCarrinho.fecharScanner();
     }
 
 }

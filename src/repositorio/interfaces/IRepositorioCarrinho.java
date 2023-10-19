@@ -6,14 +6,17 @@ import modelo.Produto;
 import java.util.List;
 
 public interface IRepositorioCarrinho {
-    void adicionarProduto(List<CarrinhoDeCompras> carrinhoDeComprasList, Produto produto);
-    void removerProduto(List<CarrinhoDeCompras> carrinhoDeCompras, Produto produto);
-    void verCarrinho(List<CarrinhoDeCompras> carrinhoDeCompras);
-    void atualizarCarrinho(List<CarrinhoDeCompras> carrinhoDeCompras);
-    double  somarTotal(Long idCarrinho);
-    void finalizarCompra(List<CarrinhoDeCompras> carrinhoDeCompras, Long idCarrinho);
-    void corrigirEstoque(List<CarrinhoDeCompras> carrinhoDeCompras, Long idCarrinho);
-    boolean verificarEstoque(List<CarrinhoDeCompras> carrinhoDeCompras, Long idCarrinho);
-    Long criarIdCarrinho();
-    void mostrarCompras();
+    List<Produto> mostrarProdutos();
+    List<Produto> filtrarProdutos(String nome);
+    void adicionarProduto(List<CarrinhoDeCompras> carrinhoDeCompras, CarrinhoDeCompras produto);
+    void removerProduto(List<CarrinhoDeCompras> carrinhoDeCompras, CarrinhoDeCompras produto);
+    void atualizarCarrinho(List<CarrinhoDeCompras> carrinhoDeCompras, CarrinhoDeCompras produto, Integer index);
+    void finalizarCompra(CarrinhoDeCompras produto, Long idVendas);
+    void corrigirEstoque(CarrinhoDeCompras produto);
+    Produto verificarEstoque(Long id);
+    List<CarrinhoDeCompras> mostrarCompras();
+    List<Produto> procurarProdutos(List<CarrinhoDeCompras> carrinhoDeCompras, List<Long> ids);
+
+
+
 }

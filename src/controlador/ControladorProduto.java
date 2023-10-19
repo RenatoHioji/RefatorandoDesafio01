@@ -21,8 +21,8 @@ public class ControladorProduto implements IControladorProduto {
     }
 
     @Override
-    public void atualizarProduto(Long idProduto, Produto produto) {
-        servicoProduto.atualizarProduto(idProduto, produto);
+    public void atualizarProduto(Long idAtualizar, Produto produto) {
+        servicoProduto.atualizarProduto(idAtualizar, produto);
     }
 
     @Override
